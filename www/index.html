@@ -5,27 +5,29 @@
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.0.1.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <script src="cordova.js"></script>
         <script type="text/javascript">
             function onDeviceReady() {
-                if (parseFloat(window.device.version) === 7.0) {
+                if (parseFloat(window.device.version) >= 7.0) {
                       document.body.style.marginTop = "20px";
                 }
             }
               
             document.addEventListener('deviceready', onDeviceReady, false);
+
         </script>
-        <script src="js/jquery-1.6.4.min.js"></script>
-        <script src="js/jquery.mobile-1.0.1.min.js"></script>
+        <script src="js/jquery-2.1.0.min.js"></script>
+        <script src="js/jquery.mobile-1.4.2.min.js"></script>
 
         <title>再興中學</title>
     </head>
 <body>
 <div data-role="page" id="main">
 <div data-role="header">
-        <h1>再興中學</h1>
+        <h1>Title</h1>
+        <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
     </div>
         <div data-role="content">
 </div>

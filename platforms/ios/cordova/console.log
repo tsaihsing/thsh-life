@@ -83,3 +83,39 @@ Terminating in response to SpringBoard's termination.
 2014-04-29 11:40:32.754 Thsh Life[24545:70b] [CDVTimer][TotalPluginStartup] 29.473007ms
 2014-04-29 11:40:32.885 Thsh Life[24545:70b] Resetting plugins due to page load.
 2014-04-29 11:40:33.228 Thsh Life[24545:70b] Finished load of: file:///Users/howard/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/6652E9FD-2BCB-46D1-AA22-58FBC2056897/Thsh%20Life.app/www/index.html
+2014-04-29 14:32:23.825 Thsh Life[25946:70b] Multi-tasking -> Device: YES, App: YES
+2014-04-29 14:32:23.853 Thsh Life[25946:70b] Unlimited access to network resources
+2014-04-29 14:32:23.914 Thsh Life[25946:70b] [CDVTimer][statusbar] 11.123002ms
+2014-04-29 14:32:23.915 Thsh Life[25946:70b] [CDVTimer][TotalPluginStartup] 12.019992ms
+2014-04-29 14:32:24.078 Thsh Life[25946:70b] Resetting plugins due to page load.
+2014-04-29 14:32:24.454 Thsh Life[25946:70b] Finished load of: file:///Users/howard/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/6652E9FD-2BCB-46D1-AA22-58FBC2056897/Thsh%20Life.app/www/index.html
+2014-04-29 14:38:59.170 Thsh Life[26259:70b] Multi-tasking -> Device: YES, App: YES
+2014-04-29 14:38:59.181 Thsh Life[26259:70b] Unlimited access to network resources
+2014-04-29 14:38:59.229 Thsh Life[26259:70b] [CDVTimer][statusbar] 9.014010ms
+2014-04-29 14:38:59.230 Thsh Life[26259:70b] [CDVTimer][TotalPluginStartup] 9.965003ms
+2014-04-29 14:38:59.442 Thsh Life[26259:70b] Resetting plugins due to page load.
+2014-04-29 14:38:59.817 Thsh Life[26259:70b] Finished load of: file:///Users/howard/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/6652E9FD-2BCB-46D1-AA22-58FBC2056897/Thsh%20Life.app/www/index.html
+2014-04-29 14:40:42.066 Thsh Life[26447:70b] Multi-tasking -> Device: YES, App: YES
+2014-04-29 14:40:42.077 Thsh Life[26447:70b] Unlimited access to network resources
+2014-04-29 14:40:42.111 Thsh Life[26447:70b] [CDVTimer][statusbar] 9.468019ms
+2014-04-29 14:40:42.112 Thsh Life[26447:70b] [CDVTimer][TotalPluginStartup] 10.074973ms
+2014-04-29 14:40:42.353 Thsh Life[26447:70b] Resetting plugins due to page load.
+2014-04-29 14:40:42.667 Thsh Life[26447:70b] Finished load of: file:///Users/howard/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/6652E9FD-2BCB-46D1-AA22-58FBC2056897/Thsh%20Life.app/www/index.html
+2014-04-29 14:41:16.403 Thsh Life[26638:70b] Multi-tasking -> Device: YES, App: YES
+2014-04-29 14:41:16.414 Thsh Life[26638:70b] Unlimited access to network resources
+2014-04-29 14:41:16.448 Thsh Life[26638:70b] [CDVTimer][statusbar] 8.733988ms
+2014-04-29 14:41:16.449 Thsh Life[26638:70b] [CDVTimer][TotalPluginStartup] 9.337962ms
+2014-04-29 14:41:16.644 Thsh Life[26638:70b] Resetting plugins due to page load.
+2014-04-29 14:41:17.005 Thsh Life[26638:70b] Finished load of: file:///Users/howard/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/6652E9FD-2BCB-46D1-AA22-58FBC2056897/Thsh%20Life.app/www/index.html
+2014-04-29 14:41:41.960 Thsh Life[26756:70b] Multi-tasking -> Device: YES, App: YES
+2014-04-29 14:41:41.970 Thsh Life[26756:70b] Unlimited access to network resources
+2014-04-29 14:41:42.007 Thsh Life[26756:70b] [CDVTimer][statusbar] 12.077987ms
+2014-04-29 14:41:42.007 Thsh Life[26756:70b] [CDVTimer][TotalPluginStartup] 12.693048ms
+2014-04-29 14:41:42.196 Thsh Life[26756:70b] Resetting plugins due to page load.
+2014-04-29 14:41:42.551 Thsh Life[26756:70b] Finished load of: file:///Users/howard/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/6652E9FD-2BCB-46D1-AA22-58FBC2056897/Thsh%20Life.app/www/index.html
+2014-04-29 14:42:24.661 Thsh Life[26927:70b] Multi-tasking -> Device: YES, App: YES
+2014-04-29 14:42:24.672 Thsh Life[26927:70b] Unlimited access to network resources
+2014-04-29 14:42:24.705 Thsh Life[26927:70b] [CDVTimer][statusbar] 9.901047ms
+2014-04-29 14:42:24.706 Thsh Life[26927:70b] [CDVTimer][TotalPluginStartup] 10.519981ms
+2014-04-29 14:42:24.932 Thsh Life[26927:70b] Resetting plugins due to page load.
+2014-04-29 14:42:25.513 Thsh Life[26927:70b] Finished load of: file:///Users/howard/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/6652E9FD-2BCB-46D1-AA22-58FBC2056897/Thsh%20Life.app/www/index.html
