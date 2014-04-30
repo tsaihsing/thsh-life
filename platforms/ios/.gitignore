@@ -3,3 +3,7 @@
 *.pbxuser
 .DS_Store
 build/
+
+CordovaLib/CordovaLib.xcodeproj/xcuserdata/
+Thsh Life.xcodeproj/project.xcworkspace/xcuserdata
+Thsh Life.xcodeproj/xcuserdata/howard.xcuserdatad
