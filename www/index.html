@@ -7,6 +7,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
 
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <script src="cordova.js"></script>
         <script src="js/jquery-2.1.0.min.js"></script>
@@ -19,24 +20,31 @@
     }
 });
         </script>
-<style type="text/css">
-#ios7statusbar
-{
-    width:100%;
-    height:20px;
-    background-color:orange;
-    position:fixed;
-    z-index:100;
-}
- 
-.ios7 .ui-page
-{
-    margin-top: 20px;
-}
-</style>
         <title>Title</title>
     </head>
 <body>
+
+<div data-role="page" id="home-page">
+        <div data-role="content">
+<div class="icon-container">
+<table>
+    <tr>
+        <td><img src="img/home_icon/01-news.png" class="home-icon"><br>最新訊息</td>
+        <td><img src="img/home_icon/02-bus.png" class="home-icon"><br>校車資訊</td>
+        <td><img src="img/home_icon/03-cal.png" class="home-icon"><br>行事曆</td>
+        <td><img src="img/home_icon/04-course.png" class="home-icon"><br>班級課表</td>
+    </tr>
+    <tr>
+        <td><img src="img/home_icon/05-lunch.png" class="home-icon"><br>營養餐點</td>
+        <td><img src="img/home_icon/06-map.png" class="home-icon"><br>校園地圖</td>
+        <td><img src="img/home_icon/07-phone.png" class="home-icon"><br>聯絡電話</td>
+        <td><img src="img/home_icon/08-weather.png" class="home-icon"><br>文山區天氣</td>
+    </tr>
+</table>
+</div>
+</div>
+</div>
+
 <div data-role="page" id="main">
 <div data-role="header">
         <h1>Title</h1>
