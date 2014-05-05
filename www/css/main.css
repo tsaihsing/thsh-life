@@ -12,9 +12,30 @@
     margin-top: 20px;
 }
 
-#home-page {
-	background-image:url(../img/app_home.jpg);
-	background-size: cover;
+/* Different home screen backgrounds for iPhone 4 and iPhone 5+ */
+
+/* iPhone 3 portrait */
+@media (device-height: 480px) and (-webkit-max-device-pixel-ratio: 1) and (orientation:portrait) {
+	#home-page {
+		background-image:url(../img/app_home_4.png);
+		background-size: cover;
+	}
+}
+ 
+/* iPhone 4 retina portrait */
+@media (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation:portrait) {
+	#home-page {
+		background-image:url(../img/app_home_4.png);
+		background-size: cover;
+	}
+}
+ 
+/* iPhone 5 or iPod Touch 5th generation, portrait */
+@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation:portrait) {
+	#home-page {
+		background-image:url(../img/app_home_5.png);
+		background-size: cover;
+	}
 }
 
 #home-page .icon-container {
