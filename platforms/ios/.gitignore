@@ -4,6 +4,7 @@
 .DS_Store
 build/
 
+cordova/
 CordovaLib/CordovaLib.xcodeproj/xcuserdata/
 Thsh Life.xcodeproj/project.xcworkspace/xcuserdata
 Thsh Life.xcodeproj/xcuserdata/
