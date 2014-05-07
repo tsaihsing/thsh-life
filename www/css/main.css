@@ -14,6 +14,11 @@
 
 /* Different home screen backgrounds for iPhone 4 and iPhone 5+ */
 
+	#home-page {
+		background-image:url(../img/app_home_5.png);
+		background-size: cover;
+	}
+
 /* iPhone 3 portrait */
 @media (device-height: 480px) and (-webkit-max-device-pixel-ratio: 1) and (orientation:portrait) {
 	#home-page {
