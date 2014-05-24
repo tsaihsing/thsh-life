@@ -5,6 +5,7 @@
 </div>
 <div data-role="content">
   <h4>今日午餐</h4>
+  <input type="date" value="2014/05/24">
   <ul data-role="listview" id="lunch-list" data-inset="true" data-filter="false">
 		<li><h3>主食：</h3></li>
 </ul>
@@ -20,6 +21,7 @@ var content = '';
     url: url,
     timeout: 5000,
     success: function(data, textStatus ){
+      if(data != false){
       alert('request successful');
       var lunchMenuId = ['base','main','secd','soup','fruit','calories'];
       var lunchMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
@@ -28,6 +30,9 @@ var content = '';
       });
       $('#lunch-list').html(content);
       $('#lunch-list').listview("refresh");
+      }else{
+        alert('no lunch today');
+      }
     },
     error: function(xhr, textStatus, errorThrown){
        alert('request failed');
