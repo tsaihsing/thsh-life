@@ -1,0 +1,27 @@
+<div data-role="page" id="lunch">
+<div data-role="header">
+        <h1>營養餐點</h1>
+        <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
+</div>
+<div data-role="content">
+<a href="#" onclick="update()">Get Lunch</a>
+<script type="text/javascript">
+var url = 'http://210.71.64.85/project_lunch/food.php';
+function update() {
+  $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: url,
+    timeout: 5000,
+    success: function(data, textStatus ){
+       alert('request successful');
+       alert(data.date);
+    },
+    error: function(xhr, textStatus, errorThrown){
+       alert('request failed');
+    }
+  });
+}
+</script>
+</div>
+</div>
