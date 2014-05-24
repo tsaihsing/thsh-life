@@ -4,25 +4,27 @@
         <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
 </div>
 <div data-role="content">
-  <h4>今日午餐</h4>
-  <input type="text" data-role="date" readonly>
+      查詢午餐<br>
+      <div class="ui-grid-b">
+	       <div class="ui-block-a"><a onclick="lunchChangeDay(-1)" data-role="button" data-icon="arrow-l" data-iconpos="notext">前一天</a></div>
+	       <div class="ui-block-b"><input type="text" data-role="date" value="今天" onchange="lunchGet($(this).val())" id="lunch-date" readonly></div>
+	       <div class="ui-block-c"><a onclick="lunchChangeDay(1)" data-role="button" data-icon="arrow-r" data-iconpos="notext">後一天</a></div>
+      </div>
   <ul data-role="listview" id="lunch-list" data-inset="true" data-filter="false">
 		<li><h3>主食：</h3></li>
 </ul>
-<a href="#" onclick="update()">Get Lunch</a>
 <script type="text/javascript">
-var url = 'http://210.71.64.85/project_lunch/food.php';
+var url = 'http://210.71.64.85/project_lunch/food.php?date=';
 
-function update() {
+function lunchGet(date) {
 var content = '';
   $.ajax({
     type: 'GET',
     dataType: 'json',
-    url: url,
+    url: url+date,
     timeout: 5000,
     success: function(data, textStatus ){
       if(data != false){
-      alert('request successful');
       var lunchMenuId = ['base','main','secd','soup','fruit','calories'];
       var lunchMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
       lunchMenuId.forEach(function(element, index, array){
@@ -42,7 +44,21 @@ var content = '';
   });
 }
 
-update();
+lunchGet('');
+
+function lunchChangeDay(delta){
+  // Reference: http://stackoverflow.com/questions/7013738/adding-1-or-2-days-to-a-date-string
+  if($('#lunch-date').val() != "今天"){
+    nwdate = new Date($('#lunch-date').val());
+  }else{
+    nwdate = new Date();
+  }
+  nwdate.setDate(nwdate.getDate()+delta);
+
+  $('#lunch-date').val([nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('/'));
+  lunchGet($('#lunch-date').val());
+}
+
 </script>
 </div>
 </div>
