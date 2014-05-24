@@ -31,14 +31,18 @@ var content = '';
       $('#lunch-list').html(content);
       $('#lunch-list').listview("refresh");
       }else{
-        alert('no lunch today');
+        $('#lunch-list').html('<li><h3>今天沒有午餐 ( ˘･з･)</h3></li>');
+        $('#lunch-list').listview("refresh");
       }
     },
     error: function(xhr, textStatus, errorThrown){
-       alert('request failed');
+      $('#lunch-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+      $('#lunch-list').listview("refresh");
     }
   });
 }
+
+update();
 </script>
 </div>
 </div>
