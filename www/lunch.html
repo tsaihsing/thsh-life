@@ -4,18 +4,30 @@
         <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
 </div>
 <div data-role="content">
+  <h4>今日午餐</h4>
+  <ul data-role="listview" id="lunch-list" data-inset="true" data-filter="false">
+		<li><h3>主食：</h3></li>
+</ul>
 <a href="#" onclick="update()">Get Lunch</a>
 <script type="text/javascript">
 var url = 'http://210.71.64.85/project_lunch/food.php';
+
 function update() {
+var content = '';
   $.ajax({
     type: 'GET',
     dataType: 'json',
     url: url,
     timeout: 5000,
     success: function(data, textStatus ){
-       alert('request successful');
-       alert(data.date);
+      alert('request successful');
+      var lunchMenuId = ['base','main','secd','soup','fruit','calories'];
+      var lunchMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
+      lunchMenuId.forEach(function(element, index, array){
+        content += '		<li><h3>' + lunchMenuName[index] + '：' + data[element] + '</h3></li>';
+      });
+      $('#lunch-list').html(content);
+      $('#lunch-list').listview("refresh");
     },
     error: function(xhr, textStatus, errorThrown){
        alert('request failed');
