@@ -1,63 +1,81 @@
-<div data-role="page" id="lunch">
+<div data-role="page" id="meal">
 <div data-role="header">
         <h1>營養餐點</h1>
         <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
 </div>
 <div data-role="content">
-      查詢午餐<br>
+    <fieldset data-role="controlgroup" data-type="horizontal">
+ 	   <input type="radio" name="meal-type" id="meal-breakfast" value="breakfast" />
+      <label for="meal-breakfast">早餐</label>
+      <input type="radio" name="meal-type" id="meal-lunch" value="lunch" checked="checked" />
+      <label for="meal-lunch">午餐</label>
+      <input type="radio" name="meal-type" id="meal-dinner" value="dinner" />
+      <label for="meal-dinner">晚餐</label>
+      <input type="radio" name="meal-type" id="meal-snack" value="snack" />
+      <label for="meal-snack">宵夜</label>
+    </fieldset>
       <div class="ui-grid-b">
-	       <div class="ui-block-a"><a onclick="lunchChangeDay(-1)" data-role="button" data-icon="arrow-l" data-iconpos="notext">前一天</a></div>
-	       <div class="ui-block-b"><input type="text" data-role="date" value="今天" onchange="lunchGet($(this).val())" id="lunch-date" readonly></div>
-	       <div class="ui-block-c"><a onclick="lunchChangeDay(1)" data-role="button" data-icon="arrow-r" data-iconpos="notext">後一天</a></div>
+	       <div class="ui-block-a"><a onclick="mealChangeDay(-1)" data-role="button" data-icon="arrow-l" data-iconpos="notext">前一天</a></div>
+	       <div class="ui-block-b"><input type="text" data-role="date" value="今天" onchange="mealGet($(this).val())" id="meal-date" readonly></div>
+	       <div class="ui-block-c"><a onclick="mealChangeDay(1)" data-role="button" data-icon="arrow-r" data-iconpos="notext">後一天</a></div>
       </div>
-  <ul data-role="listview" id="lunch-list" data-inset="true" data-filter="false">
+  <ul data-role="listview" id="meal-list" data-inset="true" data-filter="false">
 		<li><h3>主食：</h3></li>
 </ul>
 <script type="text/javascript">
-var url = 'http://210.71.64.85/project_lunch/food.php?date=';
+var url = 'http://210.71.64.85/project_lunch/food.php';
 
-function lunchGet(date) {
+function mealGet(type, date) {
 var content = '';
+var typeList = [];
+typeList['breakfast'] = '早餐';
+typeList['lunch'] = '午餐';
+typeList['dinner'] = '晚餐';
+typeList['snack'] = '宵夜';
   $.ajax({
     type: 'GET',
     dataType: 'json',
-    url: url+date,
+    url: url + '?date=' + date + '&type=' + type,
     timeout: 5000,
     success: function(data, textStatus ){
       if(data != false){
-      var lunchMenuId = ['base','main','secd','soup','fruit','calories'];
-      var lunchMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
-      lunchMenuId.forEach(function(element, index, array){
-        content += '		<li><h3>' + lunchMenuName[index] + '：' + data[element] + '</h3></li>';
+      var mealMenuId = ['base','main','secd','soup','fruit','calories'];
+      var mealMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
+      mealMenuId.forEach(function(element, index, array){
+        content += '		<li><h3>' + mealMenuName[index] + '：' + data[element] + '</h3></li>';
       });
-      $('#lunch-list').html(content);
-      $('#lunch-list').listview("refresh");
+      $('#meal-list').html(content);
+      $('#meal-list').listview("refresh");
       }else{
-        $('#lunch-list').html('<li><h3>今天沒有午餐 ( ˘･з･)</h3></li>');
-        $('#lunch-list').listview("refresh");
+        $('#meal-list').html('<li><h3>今天沒有' + typeList[type] + ' ( ˘･з･)</h3></li>');
+        $('#meal-list').listview("refresh");
       }
     },
     error: function(xhr, textStatus, errorThrown){
-      $('#lunch-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
-      $('#lunch-list').listview("refresh");
+      $('#meal-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+      $('#meal-list').listview("refresh");
     }
   });
 }
 
-lunchGet('');
-
-function lunchChangeDay(delta){
+function mealChangeDay(delta){
   // Reference: http://stackoverflow.com/questions/7013738/adding-1-or-2-days-to-a-date-string
-  if($('#lunch-date').val() != "今天"){
-    nwdate = new Date($('#lunch-date').val());
+  if($('#meal-date').val() != "今天"){
+    nwdate = new Date($('#meal-date').val().split(' ')[0]);
   }else{
     nwdate = new Date();
   }
+  var day = ['日','一','二','三','四','五','六'];
   nwdate.setDate(nwdate.getDate()+delta);
-
-  $('#lunch-date').val([nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('/'));
-  lunchGet($('#lunch-date').val());
+  $('#meal-date').val([nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('/') + ' (' + day[nwdate.getDay()] +')');
+  mealGet($('input[name=meal-type]:checked').val(), $('#meal-date').val());
 }
+
+$(document).ready(function() {
+    $('input[type=radio][name=meal-type]').change(function() {
+        mealGet(this.value, $('#meal-date').val());
+    });
+});
 
 </script>
 </div>
