@@ -67,7 +67,7 @@ function mealChangeDay(delta){
   }
   var day = ['日','一','二','三','四','五','六'];
   nwdate.setDate(nwdate.getDate()+delta);
-  $('#meal-date').val([nwdate.getFullYear(),nwdate.getMonth()+1,nwdate.getDate()].join('/') + ' (' + day[nwdate.getDay()] +')');
+  $('#meal-date').val([nwdate.getFullYear(), ((nwdate.getMonth()+1 < 10) ? '0' : '') + (nwdate.getMonth()+1), ((nwdate.getDate() < 10) ? '0' : '') + nwdate.getDate()].join('/') + ' (' + day[nwdate.getDay()] +')');
   mealGet($('input[name=meal-type]:checked').val(), $('#meal-date').val());
 }
 
