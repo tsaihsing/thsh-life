@@ -6,7 +6,7 @@
     position:fixed;
     z-index:100;
 }
- 
+
 .ios7 .ui-page
 {
     margin-top: 20px;
@@ -26,7 +26,7 @@
 		background-size: cover;
 	}
 }
- 
+
 /* iPhone 4 retina portrait */
 @media (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation:portrait) {
 	#home-page {
@@ -34,7 +34,7 @@
 		background-size: cover;
 	}
 }
- 
+
 /* iPhone 5 or iPod Touch 5th generation, portrait */
 @media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation:portrait) {
 	#home-page {
@@ -61,4 +61,9 @@ a, div{
 
 #sbs td{
 	font-size:13px;
+}
+
+.ui-datepicker {
+  margin-left: -20px;
+  z-index: 3000;
 }
