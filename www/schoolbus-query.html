@@ -13,6 +13,7 @@
 // declare map, marker as global variable in order to keep access to it
 var map;
 var marker;
+var marker_init = false;
 var busurl = 'http://210.71.64.85/project_lunch/schoolbus.php';
 
 function busGet(){
@@ -23,8 +24,8 @@ function busGet(){
 		url: busurl + '?bus=' + window.localStorage["bus"],
 		timeout: 5000,
 		success: function(data, textStatus ){
-			var busQueryId = ['bus','lat','long','state','speed','utime','direction'];
-			var busQueryName = ['路線','緯度','經度','狀態','速度','更新時間','方向'];
+			var busQueryId = ['bus','state','speed','utime','direction'];
+			var busQueryName = ['路線','狀態','速度','更新時間','方向'];
 			content = '';
 			busQueryId.forEach(function(element, index, array){
 				content += '		<li><h3>' + busQueryName[index] + '：' + data[element] + '</h3></li>';
@@ -32,9 +33,12 @@ function busGet(){
 			$('#bus-info').html(content);
 			$('#bus-info').listview("refresh");
 			map.setView([data['lat'], data['long']], 15);
-			map.removeLayer(marker);
+			if(marker_init == true){
+				map.removeLayer(marker);
+			}
 			marker = new L.marker([data['lat'], data['long']]);
 			map.addLayer(marker);
+			marker_init = true;
 			marker.bindPopup("The Bus is Here").openPopup();
 			if(content ==''){
 				// no bus info returned
