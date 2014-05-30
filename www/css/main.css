@@ -67,3 +67,8 @@ a, div{
   margin-left: -20px;
   z-index: 3000;
 }
+
+#schoolbus-map{
+  height: 300px;
+  width: 100%;
+}

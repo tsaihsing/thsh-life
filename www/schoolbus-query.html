@@ -4,6 +4,7 @@
 				<a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
 </div>
 <div data-role="content">
+<div id="schoolbus-map"></div>
 <ul data-role="listview" id="bus-info" data-inset="true" data-filter="false">
 	<li>載入校車資訊中...</li>
 </ul>
@@ -42,7 +43,18 @@ function busGet(){
 $(document).ready(function() {
 	busGet();
 	setInterval(busGet, 30000);
+	setTimeout('eval("map.invalidateSize()")', 3000);
 });
+
+var map = L.map('schoolbus-map', {
+	// position of thsh
+	center: [24.990528,121.558974],
+	zoom: 15
+});
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
 
 </script>
 </div>
