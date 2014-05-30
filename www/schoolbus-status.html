@@ -1,0 +1,40 @@
+<div data-role="page" id="schoolbus-status">
+<div data-role="header">
+				<h1>校車動態查詢</h1>
+				<a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
+</div>
+<div data-role="content">
+<ul data-role="listview" id="bus-list" data-inset="true" data-filter="false">
+	<li>載入校車列表中...</li>
+</ul>
+<script>
+var busurl = 'http://210.71.64.85/project_lunch/schoolbus.php';
+$(document).ready(function() {
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: busurl + '?list',
+		timeout: 5000,
+		success: function(data, textStatus ){
+			var content = '';
+			data.forEach(function(element, index, array){
+				content += '		<li><a href="schoolbus-query.html" onclick="window.localStorage[\'bus\']=\'' + element + '\'">' + element + '</a></li>';
+			});
+			$('#bus-list').html(content);
+			$('#bus-list').listview("refresh");
+			if(content ==''){
+				// no bus name returned
+				$('#bus-list').html('<li><h3>目前沒有活動中校車 ( ˘･з･)</h3></li>');
+				$('#bus-list').listview("refresh");
+			}
+		},
+		error: function(xhr, textStatus, errorThrown){
+			$('#bus-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+			$('#bus-list').listview("refresh");
+		}
+	});
+});
+
+</script>
+</div>
+</div>
