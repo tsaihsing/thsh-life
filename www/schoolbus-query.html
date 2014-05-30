@@ -10,12 +10,16 @@
 </ul>
 <script>
 
+// declare map, marker as global variable in order to keep access to it
+var map;
+var marker;
 var busurl = 'http://210.71.64.85/project_lunch/schoolbus.php';
 
 function busGet(){
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',
+		// which bus should be queried depends on localStorage, which was set by schoolbus-status.html
 		url: busurl + '?bus=' + window.localStorage["bus"],
 		timeout: 5000,
 		success: function(data, textStatus ){
@@ -27,6 +31,11 @@ function busGet(){
 			});
 			$('#bus-info').html(content);
 			$('#bus-info').listview("refresh");
+			map.setView([data['lat'], data['long']], 15);
+			map.removeLayer(marker);
+			marker = new L.marker([data['lat'], data['long']]);
+			map.addLayer(marker);
+			marker.bindPopup("The Bus is Here").openPopup();
 			if(content ==''){
 				// no bus info returned
 				$('#bus-info').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
@@ -41,20 +50,19 @@ function busGet(){
 }
 
 $(document).ready(function() {
+	map = L.map('schoolbus-map', {
+		// position of thsh
+		center: [24.990528,121.558974],
+		zoom: 15
+	});
+
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; OpenStreetMap contributors'
+	}).addTo(map);
+	setTimeout('eval("map.invalidateSize()")', 600);
 	busGet();
 	setInterval(busGet, 30000);
-	setTimeout('eval("map.invalidateSize()")', 3000);
 });
-
-var map = L.map('schoolbus-map', {
-	// position of thsh
-	center: [24.990528,121.558974],
-	zoom: 15
-});
-
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
 
 </script>
 </div>
