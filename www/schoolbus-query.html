@@ -26,6 +26,8 @@ function busGet(){
 		success: function(data, textStatus ){
 			var busQueryId = ['bus','state','speed','utime','direction'];
 			var busQueryName = ['路線','狀態','速度','更新時間','方向'];
+			var state_text = ['休息中','行進中'];
+			var direction_text = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
 			content = '';
 			busQueryId.forEach(function(element, index, array){
 				content += '		<li><h3>' + busQueryName[index] + '：' + data[element] + '</h3></li>';
@@ -39,7 +41,7 @@ function busGet(){
 			marker = new L.marker([data['lat'], data['long']]);
 			map.addLayer(marker);
 			marker_init = true;
-			marker.bindPopup("The Bus is Here").openPopup();
+			marker.bindPopup("狀態：" + state_text[data['state']] + "<br>速度：" + data['speed'] + " km/h<br>方向：" + direction_text[data['direction']]).openPopup();
 			if(content ==''){
 				// no bus info returned
 				$('#bus-info').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
