@@ -10,7 +10,8 @@
 <script>
 
 var busurl = 'http://210.71.64.85/project_lunch/schoolbus.php';
-$(document).ready(function() {
+
+function busGet(){
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',
@@ -36,6 +37,11 @@ $(document).ready(function() {
 			$('#bus-info').listview("refresh");
 		}
 	});
+}
+
+$(document).ready(function() {
+	busGet();
+	setInterval(busGet, 30000);
 });
 
 </script>
