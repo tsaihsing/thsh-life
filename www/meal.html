@@ -23,7 +23,7 @@
 		<li><h3>主食：</h3></li>
 </ul>
 <script type="text/javascript">
-var url = 'http://210.71.64.85/project_lunch/food.php';
+var mealurl = 'http://210.71.64.85/project_lunch/food.php';
 
 function mealGet(type, date) {
 var content = '';
@@ -35,7 +35,7 @@ typeList['snack'] = '宵夜';
   $.ajax({
     type: 'GET',
     dataType: 'json',
-    url: url + '?date=' + date + '&type=' + type,
+    url: mealurl + '?date=' + date + '&type=' + type,
     timeout: 5000,
     success: function(data, textStatus ){
       if(data != false){
