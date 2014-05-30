@@ -27,7 +27,7 @@ function busGet(){
 			var busQueryId = ['bus','state','speed','utime','direction'];
 			var busQueryName = ['路線','狀態','速度','更新時間','方向'];
 			var state_text = ['休息中','行進中'];
-			var direction_text = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
+			var direction_text = ['↗', '→', '↘', '↓', '↙', '←', '↖', '↑'];
 			content = '';
 			busQueryId.forEach(function(element, index, array){
 				content += '		<li><h3>' + busQueryName[index] + '：' + data[element] + '</h3></li>';
