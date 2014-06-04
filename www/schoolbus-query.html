@@ -65,7 +65,8 @@ $(document).ready(function() {
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; OpenStreetMap contributors'
 	}).addTo(map);
-	setTimeout('eval("map.invalidateSize()")', 600);
+	var adjustment = setInterval('eval("map.invalidateSize()")', 200);
+	setTimeout('clearInterval(adjustment)',3000);
 	busGet();
 	setInterval(busGet, 30000);
 });
