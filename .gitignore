@@ -1,3 +1,4 @@
 .DS_Store
 platforms/ios/www
 platforms/ios/cordova/console.log
+platforms/android/
