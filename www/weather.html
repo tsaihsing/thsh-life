@@ -1,0 +1,45 @@
+<div data-role="page" id="weather">
+<div data-role="header">
+				<h1>文山天氣</h1>
+				<a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
+</div>
+<div data-role="content">
+<ul data-role="listview" id="weather-list" data-inset="true" data-filter="false">
+	<li>載入天氣資料中...</li>
+</ul>
+<script>
+var weatherurl = 'http://210.71.64.85/project_lunch/weather.php';
+$(document).ready(function() {
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: weatherurl,
+		timeout: 5000,
+		success: function(data, textStatus ){
+			var content = '';
+			console.log(data);
+			data.forEach(function(element){
+				for(var i = 1; i <=2; i++){
+						content += '<li><h3><img style="vertical-align: middle" src="http://www.cwb.gov.tw' + element[i][1] + '" />' + element[i][2] + ' ' + element[i][4] + '℃ ~' + element[i][3] + '℃</h3>';
+						content += '<p>降雨機率: ' + element[i][5] + ', ' + element[0] + ' ' + element[i][0] + '</p>';
+						content += '</li>';
+				}
+			});
+			$('#weather-list').html(content);
+			$('#weather-list').listview("refresh");
+			if(content ==''){
+				// no data
+				$('#weather-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+				$('#weather-list').listview("refresh");
+			}
+		},
+		error: function(xhr, textStatus, errorThrown){
+			$('#weather-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+			$('#weather-list').listview("refresh");
+		}
+	});
+});
+
+</script>
+</div>
+</div>
