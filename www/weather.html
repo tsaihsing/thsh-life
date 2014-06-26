@@ -20,7 +20,7 @@ $(document).ready(function() {
 			console.log(data);
 			data.forEach(function(element){
 				for(var i = 1; i <=2; i++){
-						content += '<li><h3><img style="vertical-align: middle" src="http://www.cwb.gov.tw' + element[i][1] + '" />' + element[i][2] + ' ' + element[i][4] + '℃ ~' + element[i][3] + '℃</h3>';
+						content += '<li><h3><img style="vertical-align: middle" src="http://www.cwb.gov.tw' + element[i][1] + '" />' + element[i][2] + ' ' + element[i][4] + '℃~' + element[i][3] + '℃</h3>';
 						content += '<p>降雨機率: ' + element[i][5] + ', ' + element[0] + ' ' + element[i][0] + '</p>';
 						content += '</li>';
 				}
