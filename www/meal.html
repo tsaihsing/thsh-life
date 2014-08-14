@@ -38,7 +38,7 @@ typeList['snack'] = '宵夜';
     url: mealurl + '?date=' + date + '&type=' + type,
     timeout: 5000,
     success: function(data, textStatus ){
-      if(data != false){
+      if(data != null){
       var mealMenuId = ['base','main','secd','soup','fruit','calories'];
       var mealMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
       mealMenuId.forEach(function(element, index, array){
