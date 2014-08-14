@@ -1,0 +1,119 @@
+<div data-role="page" id="contact-book">
+<div data-role="header">
+        <h1>營養餐點</h1>
+        <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
+</div>
+<div data-role="content">
+    <fieldset data-role="controlgroup" data-type="horizontal">
+       <span id="grade-select-container"><select id="grade-select" name="class-select"><option value="-1" selected>年級</option></select></span>
+      <span id="class-select-container"><select id="class-select" name="class-select"><option value="-1" selected>班級</option></select></span>
+    </fieldset>
+    <fieldset>
+         <div class="ui-block-a"><a onclick="cbChangeDay(-1)" data-role="button" data-icon="arrow-l" data-iconpos="notext">前一天</a></div>
+         <div class="ui-block-b"><input type="text" data-role="date" value="今天" id="cb-date" readonly></div>
+         <div class="ui-block-c"><a onclick="cbChangeDay(1)" data-role="button" data-icon="arrow-r" data-iconpos="notext">後一天</a></div>
+      </fieldset>
+  <ul data-role="listview" id="cb-list" data-inset="true" data-filter="false">
+    <li><h3>主食：</h3></li>
+</ul>
+<script type="text/javascript">
+var cburl = 'http://210.71.64.85/project_lunch/contact_book';
+
+var classList = [];
+
+function cbGet(cid, date) {
+var content = '';
+  $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: cburl + '?date=' + date + '&cid=' + cid,
+    timeout: 5000,
+    success: function(data, textStatus ){
+      if(data != null){
+      var cbMenuId = ['base','main','secd','soup','fruit','calories'];
+      var cbMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
+      cbMenuId.forEach(function(element, index, array){
+        content += '		<li><h3>' + cbMenuName[index] + '：' + data[element] + '</h3></li>';
+      });
+      $('#cb-list').html(content);
+      $('#cb-list').listview("refresh");
+      }else{
+        $('#cb-list').html('<li><h3>今天沒有' + typeList[type] + ' ( ˘･з･)</h3></li>');
+        $('#cb-list').listview("refresh");
+      }
+    },
+    error: function(xhr, textStatus, errorThrown){
+      $('#cb-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+      $('#cb-list').listview("refresh");
+    }
+  });
+}
+
+function cbChangeDay(delta){
+  // Reference: http://stackoverflow.com/questions/7013738/adding-1-or-2-days-to-a-date-string
+  if($('#cb-date').val() != "今天"){
+    nwdate = new Date($('#cb-date').val().split(' ')[0]);
+  }else{
+    nwdate = new Date();
+  }
+  var day = ['日','一','二','三','四','五','六'];
+  nwdate.setDate(nwdate.getDate()+delta);
+  $('#cb-date').val([nwdate.getFullYear(), ((nwdate.getMonth()+1 < 10) ? '0' : '') + (nwdate.getMonth()+1), ((nwdate.getDate() < 10) ? '0' : '') + nwdate.getDate()].join('/') + ' (' + day[nwdate.getDay()] +')');
+  cbGet($('#class-select').val(), $('#cb-date').val());
+}
+
+function updateClass(){
+
+}
+
+$(document).ready(function() {
+
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url: cburl + '/list',
+      timeout: 5000,
+      success: function(data, textStatus){
+        if(data != null){
+          console.log(data);
+          $('#grade-select').children().remove().end();
+
+          var s = document.getElementById('grade-select');
+
+          data.forEach(function(element, index, array){
+            s.options[s.options.length] = new Option(element[0], index);
+            classList[index] = element[1];
+          });
+          $('#grade-select').change(function(){
+            var grade = $('#grade-select').val();
+            console.log(grade);
+            $('#class-select').children().remove().end();
+            var s = document.getElementById('class-select');
+            classList[grade].forEach(function(element, index, array){
+              s.options[s.options.length] = new Option(element[1], element[0]);
+            });
+          });
+          $('#class-select').change(function(){
+            cbGet($('#class-select').val(), $('#cb-date').val());
+          });
+
+        }else{
+          $('#cb-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+          $('#cb-list').listview("refresh");
+        }
+      }
+    });
+/*
+    $('input[type=radio][name=cb-type]').change(function() {
+        cbGet(this.value, $('#cb-date').val());
+    });
+    $('#cb-date').change(function(){
+        cbGet($('input[name=cb-type]:checked').val(), this.value);
+    });
+    cbGet('lunch','');
+*/
+});
+
+</script>
+</div>
+</div>
