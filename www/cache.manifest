@@ -1,0 +1,31 @@
+CACHE MANIFEST
+
+# Initial version
+
+css/jquery.mobile-1.4.2.min.css
+css/jquery.mobile.datepicker.css
+img/home_icon/01-news.png
+img/home_icon/02-bus.png
+img/home_icon/03-cal.png
+img/home_icon/04-course.png
+img/home_icon/05-lunch.png
+img/home_icon/06-map.png
+img/home_icon/07-phone.png
+img/home_icon/08-weather.png
+img/app_home_4.png
+img/app_home_5.png
+app_icon-precomposed.png
+js/jquery-2.1.0.min.js
+js/jquery.mobile-1.4.2.min.js
+js/jquery.mobile.datepicker.js
+js/jquery.ui.datepicker.js
+leaflet/images/layers-2x.png
+leaflet/images/layers.png
+leaflet/images/marker-icon-2x.png
+leaflet/images/marker-icon.png
+leaflet/images/marker-shadow.png
+leaflet/leaflet.css
+leaflet/leaflet.js
+
+NETWORK:
+*
