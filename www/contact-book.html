@@ -13,6 +13,8 @@
          <div class="ui-block-b"><input type="text" data-role="date" value="今天" id="cb-date" readonly></div>
          <div class="ui-block-c"><a onclick="cbChangeDay(1)" data-role="button" data-icon="arrow-r" data-iconpos="notext">後一天</a></div>
       </fieldset>
+  <div id="cb-container">
+  </div>
   <ul data-role="listview" id="cb-list" data-inset="true" data-filter="false">
     <li><h3>主食：</h3></li>
 </ul>
@@ -25,11 +27,13 @@ function cbGet(cid, date) {
 var content = '';
   $.ajax({
     type: 'GET',
-    dataType: 'json',
+    dataType: 'text',
     url: cburl + '?date=' + date + '&cid=' + cid,
     timeout: 5000,
     success: function(data, textStatus ){
       if(data != null){
+        $('#cb-container').html(data);
+/*
       var cbMenuId = ['base','main','secd','soup','fruit','calories'];
       var cbMenuName = ['主食','主菜','配菜','湯品','水果','熱量'];
       cbMenuId.forEach(function(element, index, array){
@@ -37,14 +41,18 @@ var content = '';
       });
       $('#cb-list').html(content);
       $('#cb-list').listview("refresh");
+*/
       }else{
-        $('#cb-list').html('<li><h3>今天沒有' + typeList[type] + ' ( ˘･з･)</h3></li>');
+        $('#cb-list').html('<li><h3>今天沒有聯絡本項目 ( ˘･з･)</h3></li>');
         $('#cb-list').listview("refresh");
       }
     },
     error: function(xhr, textStatus, errorThrown){
       $('#cb-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
       $('#cb-list').listview("refresh");
+      console.log(xhr);
+      console.log(textStatus);
+      console.log(errorThrown);
     }
   });
 }
