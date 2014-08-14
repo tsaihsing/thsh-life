@@ -18,7 +18,7 @@ $(document).ready(function() {
 		success: function(data, textStatus ){
 			var content = '';
 			data.forEach(function(element, index, array){
-				content += '		<li><a href="schoolbus-query.html" onclick="window.localStorage[\'bus\']=\'' + element + '\'">' + element + '</a></li>';
+				content += '		<li><a href="schoolbus-query.html" onclick="window.localStorage[\'bus\']=\'' + element.driver + '\'">' + element.driver + '</a></li>';
 			});
 			$('#bus-list').html(content);
 			$('#bus-list').listview("refresh");
