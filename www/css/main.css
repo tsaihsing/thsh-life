@@ -72,3 +72,7 @@ a, div{
   height: 300px;
   width: 100%;
 }
+
+.icon-container a{
+  text-decoration: none;
+}
