@@ -4,6 +4,37 @@
         <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
 </div>
 <div data-role="content">
+<div id="school_map"></div>
+<script type="text/javascript">
+
+var marker_init = false;
+var school_map;
+
+$(document).ready(function() {
+  school_map = L.map('school_map', {
+    // position of thsh
+    maxZoom: 4,
+    minZoom: 2,
+    crs: L.CRS.Simple
+  }).setView([0,25], 3);
+
+  var southWest = school_map.unproject([0, 1242], school_map.getMaxZoom());
+  var northEast = school_map.unproject([1361, 0], school_map.getMaxZoom());
+  school_map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
+
+  var imageUrl = 'img/map.png';
+
+  var southWestSize = school_map.unproject([0, 1242], school_map.getMaxZoom());
+  var northEastSize = school_map.unproject([1361, 0], school_map.getMaxZoom());
+  L.imageOverlay(imageUrl, new L.LatLngBounds(southWestSize, northEastSize)).addTo(school_map);
+
+//  L.marker(map.unproject([800, 300])).addTo(map).bindPopup("<b>I'm a dog!</b><br />I am a popup.<br /> ").openPopup();
+
+  var adjustment = setInterval('eval("school_map.invalidateSize()")', 200);
+  setTimeout('clearInterval(adjustment)',3000);
+});
+
+</script>
 
 </div>
 </div>
