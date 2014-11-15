@@ -10,29 +10,29 @@
 	<string>Thsh Life</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CFE17110-C812-48F2-9AEC-745D103C265F</key>
+		<key>54706FC52FF97BBBB4FEDDF0E3C5FAF932F46E3A</key>
 		<string>https://github.com/shouko/thsh-life.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/ios/Thsh Life.xcodeproj/project.xcworkspace</string>
+	<string>platforms/ios/Thsh Life.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CFE17110-C812-48F2-9AEC-745D103C265F</key>
+		<key>54706FC52FF97BBBB4FEDDF0E3C5FAF932F46E3A</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/shouko/thsh-life.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CFE17110-C812-48F2-9AEC-745D103C265F</string>
+	<string>54706FC52FF97BBBB4FEDDF0E3C5FAF932F46E3A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CFE17110-C812-48F2-9AEC-745D103C265F</string>
+			<string>54706FC52FF97BBBB4FEDDF0E3C5FAF932F46E3A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ThshLife</string>
 		</dict>

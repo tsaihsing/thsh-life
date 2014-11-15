@@ -21,7 +21,7 @@
         <script src="leaflet/leaflet.js"></script>
         <script type="text/javascript">
         $( document ).on( "pageinit", function( event ) {
-    if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS 7_\d/i)) {
+    if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS \d/i)) {
         $("body").addClass("ios7");
         $('body').append('<div id="ios7statusbar"/>');
     }
