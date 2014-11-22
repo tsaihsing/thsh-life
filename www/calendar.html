@@ -1,0 +1,46 @@
+<div data-role="page" id="calendar">
+<div data-role="header">
+        <h1>行事曆</h1>
+        <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
+</div>
+<div data-role="content">
+  <div id="cal-container">
+  </div>
+<script type="text/javascript">
+var calurl = 'http://210.71.64.85/project_lunch/calendar';
+
+$(document).ready(function() {
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url: calurl,
+      timeout: 5000,
+      success: function(data, textStatus){
+        if(data != null){
+          console.log(data);
+          $("#cal-container").html('<table>' + data['data'] + '</table>');
+
+        }else{
+          console.log("error");
+//          $('#cb-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+//          $('#cb-list').listview("refresh");
+        }
+      },
+      error: function(data, textStatus){
+        console.log('Q');
+      }
+    });
+/*
+    $('input[type=radio][name=cb-type]').change(function() {
+        cbGet(this.value, $('#cb-date').val());
+    });
+    $('#cb-date').change(function(){
+        cbGet($('input[name=cb-type]:checked').val(), this.value);
+    });
+    cbGet('lunch','');
+*/
+});
+
+</script>
+</div>
+</div>
