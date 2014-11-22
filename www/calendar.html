@@ -18,8 +18,7 @@ $(document).ready(function() {
       success: function(data, textStatus){
         if(data != null){
           console.log(data);
-          $("#cal-container").html('<table>' + data['data'] + '</table>');
-
+          $("#cal-container").html('<table data-role="table">' + data['data'] + '</table>');
         }else{
           console.log("error");
 //          $('#cb-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
