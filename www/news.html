@@ -1,18 +1,42 @@
-<div data-role="page" id="news-demo2">
+<div data-role="page" id="news">
 <div data-role="header">
-        <h1>Test Page</h1>
+        <h1>最新訊息</h1>
         <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
 </div>
 <div data-role="content">
+<ul data-role="listview" id="news-list" data-inset="true" data-filter="false">
+  <li>載入消息列表中...</li>
+</ul>
+<script>
+var newsurl = 'http://210.71.64.85/project_lunch/news';
+$(document).ready(function() {
+  $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: newsurl,
+    timeout: 5000,
+    success: function(data, textStatus ){
+      var content = '';
+      data.forEach(function(element, index, array){
+        console.log(element);
+        content += '		<li><a href="news-detail.html" onclick="window.localStorage[\'news\']=\'' + element[0] + '\'"><h3>' + element[1] + '</h3><p>' + element[2] + ' '+ element[3] + '</p></a></li>';
+        console.log('		<li><a href="news-detail.html" onclick="window.localStorage[\'news\']=\'' + element[0] + '\'"><h3>' + element[1] + '</h3><p>' + element[2] + ' '+ element[3] + '</p></a></li>');
+      });
+      $('#news-list').html(content);
+      $('#news-list').listview("refresh");
+      if(content ==''){
+        // no news name returned
+        $('#news-list').html('<li><h3>伺服器錯誤 ( ˘･з･)</h3></li>');
+        $('#news-list').listview("refresh");
+      }
+    },
+    error: function(xhr, textStatus, errorThrown){
+      $('#news-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+      $('#news-list').listview("refresh");
+    }
+  });
+});
 
-<p>
-雖差門已文常不<br />
-岸生便我腦綠小長金這合又學國人出動幾房五。觀手他機相。你雲排型。<br />
-<br />
-經的濟己房日做時際們來醫小親發皮，果電不樹事等聲前科畫說營量內的第弟驗！麼近思分是具可市，由部消的帶更息，聲事法程長己你交個神最，起怕公投目學異童生美石小香下；服出再事白。能樂成天主這奇下！<br />
-<br />
-造如的香、一經經不知是的石、很華必草排真然水；好說從顯合化蘭主預山城，眼多就國，安爾麼的都收無方線況復、現性生的背！<br />
-<br />
-而沒何高光？以品軍廣然、運比處重來人空面人們兒天。</p>
+</script>
 </div>
 </div>

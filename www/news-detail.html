@@ -1,0 +1,31 @@
+<div data-role="page" id="news-detail">
+<div data-role="header">
+        <h1>最新訊息</h1>
+        <a data-rel="back" data-direction="reverse" data-icon="back" class="ui-btn-left">回上頁</a>
+</div>
+<div data-role="content">
+<ul data-role="content" id="news-content">
+  載入消息中...
+</ul>
+<script>
+var newsdetailurl = 'http://210.71.64.85/project_lunch';
+$(document).ready(function() {
+  $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: newsdetailurl + window.localStorage['news'],
+    timeout: 5000,
+    success: function(data, textStatus ){
+      console.log(data['data']);
+      $('#news-content').html(data['data']);
+    },
+    error: function(xhr, textStatus, errorThrown){
+      $('#news-list').html('<li><h3>網路連線錯誤 &gt;&lt;</h3></li>');
+      $('#news-list').listview("refresh");
+    }
+  });
+});
+
+</script>
+</div>
+</div>
